@@ -17,7 +17,8 @@
   "scripts": {
     "build": "tsup",
     "start": "tsc ./src/index.ts",
-    "publish-changes": "npm run build & npm link & npm link open-factura & npm publish"
+    "publish-changes": "npm run build & npm link & npm link open-factura & npm publish",
+    "start:api": "ts-node src/api/server.ts"
   },
   "devDependencies": {
     "bun-types": "latest",
