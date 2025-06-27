@@ -83,6 +83,32 @@ const authorizationResult = await documentAuthorization(
 Un ejemplo completo lo puedes encontrar en la carpeta `tests`
 Ejemplos de los archivos generados los encuentras en `src/example`
 
+### API
+
+El repositorio incluye un peque\u00f1o servidor HTTP que expone las funciones de
+facturaci\u00f3n como una API. Para usarlo define las variables de entorno
+`SRI_RECEPTION_URL` y `SRI_AUTHORIZATION_URL` y ejecuta:
+
+```bash
+npm run start:api
+```
+
+El servidor se inicia en el puerto `3000` (o el que especifiques en `PORT`).
+Env\u00eda una petici\u00f3n `POST` a `/invoice` con el siguiente formato:
+
+```json
+{
+  "invoiceData": { /* datos de la factura */ },
+  "p12Path": "./firma.p12",
+  "p12Password": "contraseña"
+}
+```
+
+El campo `obligadoContabilidad` se establece autom\u00e1ticamente en `"SI"` para
+cumplir con la obligaci\u00f3n de llevar contabilidad. La respuesta contiene la
+factura generada, el XML firmado y los resultados de recepci\u00f3n y
+autorizaci\u00f3n.
+
 ### Endpoints del SRI
 
 El SRI ha habilitado dos endpoints para cada ambiente (pruebas, producción).
